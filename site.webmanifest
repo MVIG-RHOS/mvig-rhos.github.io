@@ -1,9 +1,9 @@
 {
-  "name": "react-resume-template",
-  "short_name": "react-resume-template",
+  "name": "RHOS-Homepage",
+  "short_name": "RHOS",
   "icons": [
-    {"src": "/icon-192.png", "type": "image/png", "sizes": "192x192"},
-    {"src": "/icon-512.png", "type": "image/png", "sizes": "512x512"}
+    {"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},
+    {"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}
   ],
   "theme_color": "#515455",
   "background_color": "#515455",
