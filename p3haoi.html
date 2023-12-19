@@ -147,7 +147,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Method</h2>
-        <img src="../src/pages/p3haoi/images/p3haoi_overall_pipeline_final.png" style="max-width: 950px">
+        <img src="p3haoi_item/images/p3haoi_overall_pipeline_final.png" style="max-width: 950px">
         <p align="left">
           In the purple block are the image encoders. Superquadric-composed shapes are also encoded to predict primitive features. Then the image features and primitive features are contacted together to predict the 6-Dof of each input superquadric part. Deformation is based on these predictions. The deformed shapes are then rendered back to 2D and some losses are computed based on some supervisions.
         </p>
@@ -160,7 +160,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Dataset Annotation</h2>
-        <img src="../src/pages/p3haoi/images/p3haoi_anno_all_final.png" style="max-width: 950px">
+        <img src="p3haoi_item/images/p3haoi_anno_all_final.png" style="max-width: 950px">
         <p align="left">
           For each category, we select CAD models with the closest appearance to the object in the image. Textures are not taken into consideration when choosing CAD models. For each image instance, the fine-tuned SMPL mesh and the object CAD template model are imported into Blender. Then we set the camera parameters predicted by ROMP and the original image as the background image in the camera view mode. During the annotation process, we did not deform the human. All operations take place on the object. Using the UH, we first adjust the object template to the object state shown in the image. Then we switch between the camera view mode and the whole world view mode to check (1) if the annotated object projection aligns perfectly with the background image, and (2) if the spatial arrangement with the human is reasonable based on the information in the image, and (3) if it is consistent with common sense, while continue adjusting the object using the UH. The annotation for one image is finished until the object satisfies the three conditions above. When the annotation is finished, we export the object parts.
         </p>
