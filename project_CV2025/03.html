@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="计算机视觉课程 - 课题：视觉配置和数据选择对机器人模仿学习性能的研究">
+  <meta name="keywords" content="机器人学,模仿学习,视觉配置,数据选择,机器人操作,RoboCasa">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>课题：视觉配置和数据选择对机器人模仿学习性能的研究</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- CSS Frameworks and Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --theme-color: #2E86AB;
+    }
+    .hero {
+      background-color: #f9f9f9;
+    }
+    .project-title {
+      font-weight: bold;
+    }
+    .project-info {
+      margin-top: 1rem;
+      line-height: 1.8;
+    }
+    .link-block {
+      margin: 0.5rem;
+    }
+    .button.is-dark {
+        background-color: var(--theme-color);
+        border-color: transparent;
+    }
+    .button.is-dark:hover {
+        background-color: #236b8e;
+    }
+    .section-title {
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      border-bottom: 2px solid var(--theme-color);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+    .project-teaser {
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      display: block;
+      max-width: 60%;
+    }
+    .reference-item {
+      margin-bottom: 1.5rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--theme-color);
+    }
+    .resource-table {
+      margin-top: 1.5rem;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .resource-table th, .resource-table td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    .resource-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+    .resource-table tr:hover {
+      background-color: #f9f9f9;
+    }
+    .task-box {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BPBZKDV09"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6BPBZKDV09');
+</script>
+
+<body>
+
+<!-- 课题头部信息区 -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 project-title">课题03</h1>
+          <h2 class="subtitle is-3">视觉配置和数据选择对机器人模仿学习性能的研究</h2>
+          
+          <!-- 课题导航按钮 -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="../CV_2025.html#projects" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-arrow-left"></i></span>
+                  <span>返回课题列表</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">一、背景介绍</h2>
+        <div class="content has-text-justified">
+          <p>
+            在机器人操作任务中，视觉感知是环境理解与决策执行的基础。现实场景中，机器人的相机视角（如俯视角/侧视角）、相机数量（单目/双目/多目）以及训练数据的质量与分布，直接影响模仿学习（Imitation Learning）策略的泛化能力与执行精度。
+          </p>
+          <p>
+            随着 RoboCase、Robotwin 等开源机器人操作平台的兴起，研究者可便捷地获取大规模演示数据并验证策略性能。本次课题聚焦于<strong>视觉配置与数据选择对模仿学习的影响</strong>，探索如何通过优化感知系统设计提升机器人在复杂操作任务中的表现。
+          </p>
+        </div>
+
+        <div class="notification is-info mt-5">
+          <p class="is-size-6"><strong>关键词：</strong> 模仿学习，视觉配置，数据选择，机器人操作</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">二、任务目标</h2>
+        
+        <div class="content has-text-justified">
+          <!-- <h3 class="title is-5 mb-3">🎯 任务目标</h3> -->
+          
+          <!-- 目标1 -->
+          <div class="task-box">
+            <h4 class="title is-6">1. 在标准平台上构建基准实验</h4>
+            <p class="is-size-6 mt-2">
+              基于 RoboCasa、Robotwin 等平台，实现至少两种常见模仿学习算法（如 DP、ACT、pi系列等）。<b>本课题不要求亦不建议真机实验。</b>
+            </p>
+          </div>
+          
+          <!-- 目标2 -->
+          <div class="task-box">
+            <h4 class="title is-6">2. 验证关键因素对策略学习的影响（二选一）</h4>
+            <p class="is-size-6 mt-2">选项一：相机视角和数量</p>
+            <ul class="is-size-6 mt-1">
+              <li>对比不同拍摄角度（相机外参）对任务成功率的影响；</li>
+              <li>分析单目、双目及多目相机配置下的性能差异。</li>
+            </ul>
+            
+            <p class="is-size-6 mt-3">选项二：数据选择</p>
+            <ul class="is-size-6 mt-1">
+              <li>研究数据多样性（场景/物体/演示者）与策略性能的关系；</li>
+              <li>分析数据量对学习效果的影响规律。</li>
+            </ul>
+          </div>
+          
+          <!-- 目标3 -->
+          <div class="task-box">
+            <h4 class="title is-6">3. 提出优化方案</h4>
+            <p class="is-size-6 mt-2">
+              基于分析结果，设计针对性的视觉配置方案或数据筛选策略，提升模仿学习效率。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">三、参考资源与开源代码</h2>
+        
+        <div class="content has-text-justified">
+          <!-- 策略算法 -->
+          <h3 class="title is-5 mb-3">1. 模仿学习策略</h3>
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>Diffusion Policy</strong></p>
+            <p class="mb-2">
+              <a href="https://github.com/real-stanford/diffusion_policy" target="_blank">Code: github.com/real-stanford/diffusion_policy</a>
+            </p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>Action Chunking Transformer (ACT)</strong></p>
+            <p class="mb-2">
+              <a href="https://github.com/tonyzhaozh/act" target="_blank">Code: github.com/tonyzhaozh/act</a>
+            </p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>Openpi</strong></p>
+            <p class="mb-2">
+              <a href="https://github.com/Physical-Intelligence/openpi" target="_blank">Code: github.com/Physical-Intelligence/openpi</a>
+            </p>
+          </div>
+
+          <!-- 视觉配置 -->
+          <h3 class="title is-5 mt-6 mb-3">2. 模仿学习中的相机配置</h3>
+          <div class="reference-item">
+            <p class="is-size-6 mb-1">相关研究论文</p>
+            <p class="mb-2">
+              <a href="https://arxiv.org/pdf/2510.02268" target="_blank">Paper: arxiv.org/pdf/2510.02268</a>
+            </p>
+          </div>
+
+          <!-- 数据选择 -->
+          <h3 class="title is-5 mt-6 mb-3">3. 模仿学习中的数据选择</h3>
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>Mutual Information</strong></p>
+            <p class="mb-2">
+              <a href="https://arxiv.org/pdf/2502.08623" target="_blank">Paper: arxiv.org/pdf/2502.08623</a>
+            </p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>Datamodel</strong></p>
+            <p class="mb-2">
+              <a href="https://robin-lab.cs.utexas.edu/datamodels4imitation/" target="_blank">Project: robin-lab.cs.utexas.edu/datamodels4imitation/</a>
+            </p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>KDE 相关方法</strong></p>
+            <p class="mb-2">
+              <a href="https://arxiv.org/pdf/2508.10511" target="_blank">Paper: arxiv.org/pdf/2508.10511</a>
+            </p>
+          </div>
+
+          <!-- 基准平台 -->
+          <h3 class="title is-5 mt-6 mb-3">4. 基准平台</h3>
+          <table class="resource-table">
+            <thead>
+              <tr>
+                <th>名称</th>
+                <th>说明</th>
+                <th>链接</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Robotwin</strong></td>
+                <td>模仿学习算法库（含BC、GAIL等实现）</td>
+                <td><a href="https://github.com/robotwin-Platform/RoboTwin" target="_blank">github.com/robotwin-Platform/RoboTwin</a></td>
+              </tr>
+              <tr>
+                <td><strong>RoboCasa</strong></td>
+                <td>包含多场景家居操作任务与基准数据集</td>
+                <td><a href="https://github.com/robocasa/robocasa" target="_blank">github.com/robocasa/robocasa</a></td>
+              </tr>
+              <tr>
+                <td><strong>RLBench</strong></td>
+                <td>机器人操作基准平台，支持多视角相机配置</td>
+                <td><a href="https://github.com/stepjam/RLBench" target="_blank">github.com/stepjam/RLBench</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+</div>
+  
+</div>
+
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p class="has-text-centered">
+            计算机视觉AI3604 | 2025-2026-1
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="计算机视觉课程 - 课题一：相变的视觉理解 —— Referring Video Object Segmentation 在开放世界中的探索">
+  <meta name="keywords" content="计算机视觉,大作业,视频物体分割,相变理解,开放世界">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>课题一：相变的视觉理解 —— Referring Video Object Segmentation 在开放世界中的探索</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- CSS Frameworks and Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --theme-color: #2E86AB;
+    }
+    .hero {
+      background-color: #f9f9f9;
+    }
+    .project-title {
+      font-weight: bold;
+    }
+    .project-info {
+      margin-top: 1rem;
+      line-height: 1.8;
+    }
+    .link-block {
+      margin: 0.5rem;
+    }
+    .button.is-dark {
+        background-color: var(--theme-color);
+        border-color: transparent;
+    }
+    .button.is-dark:hover {
+        background-color: #236b8e;
+    }
+    .section-title {
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      border-bottom: 2px solid var(--theme-color);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+    .project-teaser {
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      display: block;
+      max-width: 80%;
+    }
+    .reference-item {
+      margin-bottom: 1.5rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--theme-color);
+    }
+    .resource-table {
+      margin-top: 1.5rem;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .resource-table th, .resource-table td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    .resource-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+    .resource-table tr:hover {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BPBZKDV09"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6BPBZKDV09');
+</script>
+
+<body>
+
+<!-- 课题头部信息区 -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 project-title">课题01</h1>
+          <h2 class="subtitle is-3">相变的视觉理解—— Referring Video Object Segmentation 在开放世界中的探索</h2>
+          
+          <!-- 课题导航按钮 -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="../CV_2025.html#projects" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-arrow-left"></i></span>
+                  <span>返回课题列表</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">一、背景介绍</h2>
+        <div class="content has-text-justified">
+          <p>
+            在现实世界中，物体会经历各种<strong>物理性变化</strong>（如冰融化成水、铁生锈、蜡烛燃烧等）。让计算机能够<strong>理解这些视觉上的相变现象</strong>，对于机器人感知、AR/VR 场景理解等应用至关重要。
+          </p>
+          <p>
+            在计算机视觉中，<a href="https://github.com/gaomingqi/Awesome-Video-Object-Segmentation" target="_blank">视频物体分割（Video Object Segmentation, VOS）</a>是理解动态场景中物体变化的重要基础任务。进一步地，<strong>指代视频物体分割（Referring Video Object Segmentation, Ref-VOS）</strong>要求模型根据一段<strong>文本描述</strong>（如"正在融化的冰块"）在视频中<strong>精确定位并分割</strong>对应的目标物体。
+          </p>
+          <p>
+            本课题以 <strong>Ref-VOS</strong> 为切入点，使用 <strong><a href="https://zixuan-chen.github.io/M-cube-VOS.github.io/" target="_blank">M³-VOS 数据集</a></strong> 作为benchmark，探索如何在<strong>开放世界环境</strong>（即无专门训练集）下提升 Ref-VOS 模型的性能。
+          </p>
+        </div>
+
+        <div class="notification is-info mt-5">
+        <p class="is-size-6"><strong>关键词：</strong> 相变理解, LLM, 语义增强, 开放世界视觉</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">二、任务目标</h2>
+        <div class="content has-text-justified">
+          <ol class="is-size-6">
+            <li class="mb-3"><strong>测试现有 SOTA Ref-VOS 模型</strong> 在 <strong>M³-VOS</strong> 数据集上的表现；</li>
+            <li class="mb-3"><strong>分析模型在相变场景中的难点</strong>（如物体形态、材质、语义转变）；</li>
+            <li class="mb-3"><strong>设计改进方法</strong>，提高模型在开放世界下的分割性能。</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">三、可能的改进思路</h2>
+        <p class="subtitle is-6 mb-4">以下为可尝试的方向（任选其一或多项结合）：</p>
+        
+        <div class="content has-text-justified">
+          <div class="box mb-5">
+            <h3 class="title is-5">1. 语言增强型方法</h3>
+            <ul class="is-size-6">
+              <li class="mb-2">利用大语言模型（LLM）对目标物体的文本描述进行推理扩展。</li>
+              <li class="mb-2">例如：输入 "融化的冰块"，自动生成时序描述 "开始为透明的冰块 → 表面出现水珠 → 逐渐融化成水"。</li>
+              <li class="mb-2">将增强后的文本输入 Ref-VOS 模型，提高对动态语义的理解能力。</li>
+            </ul>
+          </div>
+          
+          <div class="box mb-5">
+            <h3 class="title is-5">2. 语义层次建模</h3>
+            <ul class="is-size-6">
+              <li class="mb-2">将物体描述分为<strong>对象语义层面</strong>（如冰块、水）与<strong>视觉属性层面</strong>（如透明、反光）。</li>
+              <li class="mb-2">模型可分别编码这两类语义，并在视觉匹配阶段进行分级对齐，提高在外观变化中的鲁棒性。</li>
+            </ul>
+          </div>
+          
+          <div class="box">
+            <h3 class="title is-5">3. 基于视觉-语言预训练模型的适配</h3>
+            <ul class="is-size-6">
+              <li class="mb-2">利用现成的视觉-语言模型（如 ReferDINO, GLUS, VOCap），在 M³-VOS 上进行零样本或小样本测试。</li>
+              <li class="mb-2">对模型进行轻量化调优（例如 prompt 优化、文本特征重加权）。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">四、参考资源</h2>
+        
+        <div class="content has-text-justified">
+          <h3 class="title is-5 mb-3">论文参考</h3>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>ReferDINO: Referring Video Object Segmentation with Visual Grounding Foundations</strong></p>
+            <p class="mb-2"><a href="https://arxiv.org/pdf/2501.14607" target="_blank">arXiv:2501.14607</a></p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>M³-VOS: Multi-Phase, Multi-Transition, and Multi-Scenery Video Object Segmentation</strong></p>
+            <p class="mb-2"><a href="https://zixuan-chen.github.io/M-cube-VOS.github.io/" target="_blank">Project Page</a></p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>RGA³: Object-centric Video Question Answering with Visual Grounding and Referring</strong></p>
+            <p class="mb-2"><a href="https://github.com/qirui-chen/RGA3-release" target="_blank">ICCV 2025</a></p>
+          </div>
+          
+          <h3 class="title is-5 mt-6 mb-3">开源代码（适合直接上手）</h3>
+          
+          <table class="resource-table">
+            <thead>
+              <tr>
+                <th>名称</th>
+                <th>说明</th>
+                <th>链接</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>GLUS</strong></td>
+                <td>Google开源的视频理解模型，可直接测试 Ref-VOS 任务</td>
+                <td><a href="https://github.com/GLUS-video/GLUS" target="_blank">GLUS-video/GLUS</a></td>
+              </tr>
+              <tr>
+                <td><strong>ReferDINO</strong></td>
+                <td>视频级视觉指代模型，支持文本到视频分割</td>
+                <td><a href="https://github.com/google-deepmind/vocap" target="_blank">ReferDINO Code</a></td>
+              </tr>
+              <tr>
+                <td><strong>Veason-R1</strong></td>
+                <td>视觉指代与时序理解的统一模型</td>
+                <td><a href="https://github.com/SitongGong/Veason-R1" target="_blank">SitongGong/Veason-R1</a></td>
+              </tr>
+              <tr>
+                <td><strong>ThinkVideo</strong></td>
+                <td>多模态视频理解模型，支持视频问答和指代任务</td>
+                <td><a href="https://github.com/DanielSHKao/ThinkVideo" target="_blank">DanielSHKao/ThinkVideo</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p class="has-text-centered">
+            计算机视觉AI3604 | 2025-2026-1
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

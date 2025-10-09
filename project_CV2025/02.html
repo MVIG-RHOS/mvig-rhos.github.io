@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="计算机视觉课程 - 课题：基于人体–物体交互的三维人体重建精度提升">
+  <meta name="keywords" content="计算机视觉,大作业,三维人体重建,人体-物体交互,GVHMR">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>课题：基于人体–物体交互的三维人体重建精度提升</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- CSS Frameworks and Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --theme-color: #2E86AB;
+    }
+    .hero {
+      background-color: #f9f9f9;
+    }
+    .project-title {
+      font-weight: bold;
+    }
+    .project-info {
+      margin-top: 1rem;
+      line-height: 1.8;
+    }
+    .link-block {
+      margin: 0.5rem;
+    }
+    .button.is-dark {
+        background-color: var(--theme-color);
+        border-color: transparent;
+    }
+    .button.is-dark:hover {
+        background-color: #236b8e;
+    }
+    .section-title {
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      border-bottom: 2px solid var(--theme-color);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+    .project-teaser {
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      display: block;
+      max-width: 60%;
+    }
+    .reference-item {
+      margin-bottom: 1.5rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--theme-color);
+    }
+    .resource-table {
+      margin-top: 1.5rem;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .resource-table th, .resource-table td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    .resource-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+    .resource-table tr:hover {
+      background-color: #f9f9f9;
+    }
+    .task-box {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BPBZKDV09"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6BPBZKDV09');
+</script>
+
+<body>
+
+<!-- 课题头部信息区 -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 project-title">课题02</h1>
+          <h2 class="subtitle is-3">基于人体–物体交互的三维人体重建精度提升</h2>
+          
+          <!-- 课题导航按钮 -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="../CV_2025.html#projects" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-arrow-left"></i></span>
+                  <span>返回课题列表</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">一、背景与动机</h2>
+        <div class="content has-text-justified">
+          <p>
+            现有的三维/四维人体交互数据集（如 <strong>BEHAVE</strong>、<strong>InterCap</strong>）主要在室内环境采集，存在<strong>采集成本高</strong>、<strong>标注难度大</strong>的问题。近年来，研究人员尝试通过人体重建与物体重建算法结合，实现开放语义下人物–物体交互场景的自动重建与标注，但这类方法普遍面临<strong>人体与物体匹配不准确</strong>的核心挑战：
+          </p>
+          <ul class="is-size-6 mt-3 mb-3">
+            <li>交互姿态偏差：例如"双手握持物体"场景中，重建结果出现双手前后错位或重叠；</li>
+            <li>空间位置偏移：人体整体姿态与物体位置不匹配，如手部未接触物体却出现"悬浮握持"效果；</li>
+            <li>交互理解受限：上述偏差直接导致后续交互语义分析（如"握持""搬运"）的准确性下降。</li>
+          </ul>
+          <p>
+            本课题旨在探索<strong>在人体重建过程中引入物体几何条件</strong>，通过同步考虑人体与物体的交互信息，提升人物–物体交互场景的整体重建精度，为后续交互理解与生成任务奠定基础。
+          </p>
+        </div>
+
+        <!-- 示例图片 -->
+        <div class="mt-6">
+          <p class="is-size-6 mb-2"><strong>重建偏差示例：</strong>双手握持链条（chain）场景中手部空间位置偏差</p>
+          <img src="01-01.png" alt="人体-物体交互重建偏差示例" class="project-teaser">
+        </div>
+
+        <div class="notification is-info mt-5">
+          <p class="is-size-6"><strong>关键词：</strong> 三维人体重建, 人体-物体交互, 几何约束, 姿态优化, BEHAVE数据集</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">二、任务与可能的方法</h2>
+        <p class="subtitle is-6 mb-4">核心任务：在现有人体重建算法（如 GVHMR）基础上，加入物体 mesh 条件分支，利用物体几何信息约束人体重建结果</p>
+        
+        <div class="content has-text-justified">
+          <!-- 方法1 -->
+          <div class="task-box">
+            <h3 class="title is-5">1. 条件分支扩展</h3>
+            <p class="is-size-6 mt-2">
+              在人体重建模型的<strong>编码器或隐空间</strong>中新增物体 mesh 分支，通过以下步骤优化重建：
+            </p>
+            <ul class="is-size-6 mt-2">
+              <li>提取物体 mesh 的几何特征（如表面法线、关键点、体积信息）；</li>
+              <li>将物体特征与人体特征进行融合（如注意力机制、特征拼接）；</li>
+              <li>通过融合特征调整人体姿态预测结果，确保人体与物体的交互合理性。</li>
+            </ul>
+          </div>
+          
+          <!-- 方法2 -->
+          <div class="task-box">
+            <h3 class="title is-5">2. 交互几何约束</h3>
+            <p class="is-size-6 mt-2">
+              对人体重建结果施加<strong>额外的交互几何约束</strong>，优化人体与物体的空间关系：
+            </p>
+            <ul class="is-size-6 mt-2">
+              <li>接触约束：确保交互部位（如手部）与物体表面存在合理接触，避免悬浮或穿透；</li>
+              <li>穿插惩罚：对人体 mesh 与物体 mesh 的重叠区域施加惩罚项，减少几何冲突；</li>
+              <li>先验约束：结合少量人工标注或启发式规则（如"握持时手部应包裹物体"），定义交互先验，引导重建方向。</li>
+            </ul>
+          </div>
+          
+          <!-- 方法3 -->
+          <div class="task-box">
+            <h3 class="title is-5">3. 基于数据增强/后处理的优化</h3>
+            <p class="is-size-6 mt-2">
+              通过数据集预处理或后处理模块，提升人体与物体的匹配精度：
+            </p>
+            <ul class="is-size-6 mt-2">
+              <li>数据增强：对 BEHAVE/InterCap 数据集进行人工标注补充（如交互关键点、接触区域），扩大约束样本；</li>
+              <li>后处理微调：在现有重建结果基础上，设计优化模块（如迭代最近点算法、姿态优化器），微调人体关节位置与物体相对关系；</li>
+              <li>误差修正：通过分析重建误差（如手部-物体距离），建立误差映射模型，实现针对性修正。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">三、前提知识与参考资源</h2>
+        
+        <div class="content has-text-justified">
+          <!-- 前提知识 -->
+          <h3 class="title is-5 mb-3">1. 必备前提知识</h3>
+          <ul class="is-size-6">
+            <li class="mb-2"><strong>SMPL/SMPL-X 人体参数化模型</strong>：理解人体 mesh 的参数化表示（如形状参数、姿态参数）；</li>
+            <li class="mb-2"><strong>三维重建基础</strong>：掌握图片/文本驱动的三维重建原理（如 TRELLIS 模型）；</li>
+            <li class="mb-2"><strong>三维开发工具</strong>：熟练使用 open3d（点云/mesh处理）、pytorch3d（三维深度学习）等库。</li>
+          </ul>
+
+          <!-- 数据集 -->
+          <h3 class="title is-5 mt-6 mb-3">2. 公开数据集</h3>
+          <table class="resource-table">
+            <thead>
+              <tr>
+                <th>数据集名称</th>
+                <th>核心内容</th>
+                <th>访问链接</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>BEHAVE Dataset</strong></td>
+                <td>包含多种人体-物体交互场景（如坐、靠、握）的三维扫描数据，提供人体与物体的 mesh 标注</td>
+                <td><a href="https://behave.is.tue.mpg.de/" target="_blank">behave.is.tue.mpg.de</a></td>
+              </tr>
+              <tr>
+                <td><strong>InterCap Dataset</strong></td>
+                <td>聚焦动态人体-物体交互的捕捉数据，支持时序交互场景的重建研究</td>
+                <td><a href="https://intercap.is.tue.mpg.de/" target="_blank">intercap.is.tue.mpg.de</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 参考论文与代码 -->
+          <h3 class="title is-5 mt-6 mb-3">3. 参考论文与开源代码</h3>
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>GVHMR: A Generalizable Volumetric Human Mesh Recovery Framework</strong></p>
+            <p class="mb-1"><strong>用途</strong>：基础人体重建模型，可作为本课题的 baseline</p>
+            <p class="mb-2">
+              <a href="https://arxiv.org/abs/2306.09309" target="_blank">Paper: arxiv.org/abs/2306.09309</a> | 
+              <a href="https://github.com/yanfengliu/GVHMR" target="_blank">Code: github.com/yanfengliu/GVHMR</a>
+            </p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>TRELLIS: Human-object Interaction Reconstruction</strong></p>
+            <p class="mb-1"><strong>用途</strong>：人体-物体交互重建的代表性工作，提供交互建模思路</p>
+            <p class="mb-2">
+              <a href="https://arxiv.org/abs/2310.03705" target="_blank">Paper: arxiv.org/abs/2310.03705</a> | 
+              <a href="https://github.com/trellis-hoi/TRELLIS" target="_blank">Code: github.com/trellis-hoi/TRELLIS</a>
+            </p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>3DHOI</strong></p>
+            <p class="mb-1"><strong>用途</strong>：人体-物体交互分析的基础工作，提供交互语义与几何关联的参考</p>
+            <p class="mb-2">
+              <a href="https://wenboran2002.github.io/3dhoi/" target="_blank">Project Page: wenboran2002.github.io/3dhoi/</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">四、算力与工作量预估</h2>
+        <div class="content has-text-justified">
+          <ul class="is-size-6">
+            <li class="mb-3"><strong>算力需求</strong>：训练可在 <strong>1–2 块中等算力 GPU</strong>（如 RTX 3090/4090）上完成；若选择微调或小样本实验，可降低算力要求。</li>
+            <li class="mb-3"><strong>工作量适配</strong>：适合本科生一个学期的课程大作业，可根据个人/小组能力选择以下切入点：
+              <ul class="mt-2 ml-5">
+                <li>模型结构改进：聚焦条件分支扩展（如新增物体特征融合模块）；</li>
+                <li>约束设计：专注交互几何约束的数学建模与损失函数设计；</li>
+                <li>数据/后处理：侧重数据集标注补充或后处理优化模块开发。</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+</div>
+
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p class="has-text-centered">
+            计算机视觉AI3604 | 2025-2026-1
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

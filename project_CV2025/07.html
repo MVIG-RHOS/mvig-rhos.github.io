@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="计算机视觉课程 - 课题：仅凭视觉输入的游戏自动学习与泛化">
+  <meta name="keywords" content="计算机视觉,强化学习,游戏AI,视觉控制,端到端学习">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>课题：仅凭视觉输入的游戏自动学习与泛化</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- CSS Frameworks and Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --theme-color: #2E86AB;
+    }
+    .hero {
+      background-color: #f9f9f9;
+    }
+    .project-title {
+      font-weight: bold;
+    }
+    .project-info {
+      margin-top: 1rem;
+      line-height: 1.8;
+    }
+    .link-block {
+      margin: 0.5rem;
+    }
+    .button.is-dark {
+        background-color: var(--theme-color);
+        border-color: transparent;
+    }
+    .button.is-dark:hover {
+        background-color: #236b8e;
+    }
+    .section-title {
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      border-bottom: 2px solid var(--theme-color);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+    .project-teaser {
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      display: block;
+      max-width: 60%;
+    }
+    .reference-item {
+      margin-bottom: 1.5rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--theme-color);
+    }
+    .resource-table {
+      margin-top: 1.5rem;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .resource-table th, .resource-table td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    .resource-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+    .resource-table tr:hover {
+      background-color: #f9f9f9;
+    }
+    .task-box {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BPBZKDV09"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6BPBZKDV09');
+</script>
+
+<body>
+
+<!-- 课题头部信息区 -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 project-title">课题07</h1>
+          <h2 class="subtitle is-3">仅凭视觉输入的游戏自动学习与泛化</h2>
+          
+          <!-- 课题导航按钮 -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="../CV_2025.html#projects" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-arrow-left"></i></span>
+                  <span>返回课题列表</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">一、背景与动机</h2>
+        <div class="content has-text-justified">
+          <p>
+            在经典的强化学习研究（如 <strong>DeepMind DQN</strong>）中，智能体（Agent）通常依赖于游戏环境（如 <strong>Atari</strong>）提供的<strong>显式状态（state）</strong>信息来学习策略。然而，在真实世界或现代游戏（例如 HTML5 网页游戏、Steam 游戏）中，模型往往无法访问底层状态信息，唯一可见的输入是<strong>屏幕画面（pixels）</strong>。
+          </p>
+          <p class="mt-3">
+            本课题的目标是：<b>仅凭视觉输入，让模型自动学习打游戏，并具备跨游戏泛化能力</b>。这不仅是"玩游戏"的问题，更是计算机视觉与智能决策结合的典型任务：如何从视频中提取结构化状态信息，并在视觉世界中实现智能决策？
+          </p>
+        </div>
+
+        <div class="notification is-info mt-5">
+          <p class="is-size-6"><strong>关键词：</strong> 视觉强化学习, 端到端控制, 模仿学习, 多模态大模型, 游戏AI</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">二、问题与解决方法</h2>
+        
+        <div class="content has-text-justified">
+          <!-- 问题1 -->
+          <div class="task-box">
+            <h3 class="title is-5">1. 缺乏显式 state 与 reward 信号</h3>
+            <p class="is-size-6 mt-2">
+              在无法访问环境底层接口的情况下，智能体无法直接获得"得分"或"状态"。因此需要：
+            </p>
+            <ul class="is-size-6 mt-2">
+              <li>构造状态表示（state representation）</li>
+              <li>设计代理 reward 或自监督信号</li>
+            </ul>
+            <p class="is-size-6 mt-3"><strong>可能方法：</strong></p>
+            <ul class="is-size-6 mt-2">
+              <li>基于视觉特征的状态建模（如特征聚类、关键对象检测、运动估计）</li>
+              <li>基于变化检测或目标达成检测的 reward 构造（如帧差法、目标检测差异）</li>
+            </ul>
+            <p class="is-size-6 mt-3 italic">
+              Insight：将视觉流转化为可学习的语义信号，是现实场景中通用智能体的第一步。
+            </p>
+          </div>
+          
+          <!-- 问题2 -->
+          <div class="task-box">
+            <h3 class="title is-5">2. 端到端视觉→动作学习（End-to-End Visual Control）</h3>
+            <p class="is-size-6 mt-2">
+              一种更直接的方式是<strong>从像素到动作的端到端学习</strong>，跳过显式状态建模环节。
+            </p>
+            
+            <h4 class="title is-6 mt-4">方法1：模仿学习（Behavioral Cloning, BC）</h4>
+            <p class="is-size-6 mt-2">
+              利用<strong>人类游戏演示数据</strong>（视频帧 + 动作键位），训练模型模仿人类行为。
+            </p>
+            <ul class="is-size-6 mt-2">
+              <li>思想：模仿而非强化，先从已有的专家经验出发。</li>
+              <li>模型结构：CNN / Transformer 提取视觉特征 → MLP 输出离散动作</li>
+              <li>优点：简单、稳定，适合初学者实现。</li>
+            </ul>
+            <p class="is-size-6 mt-3"><strong>开源参考：</strong></p>
+            <ul class="is-size-6 mt-2">
+              <li><a href="https://github.com/yenchenlin/DeepLearningFlappyBird" target="_blank">DeepLearningFlappyBird</a></li>
+              <li><a href="https://github.com/uvipen/Flappy-bird-deep-Q-learning-pytorch" target="_blank">Behavioral Cloning with Gym</a></li>
+              <li><a href="https://github.com/Baekalfen/PyBoy" target="_blank">PyBoy Pokémon BC Demo</a></li>
+            </ul>
+            
+            <h4 class="title is-6 mt-4">方法2：大模型推理式控制（Multimodal LLM-based Control）</h4>
+            <p class="is-size-6 mt-2">
+              利用多模态大模型（如 <strong>Gemini、GPT-4V、Voyager、GATO</strong>）理解屏幕画面并生成动作。
+            </p>
+            <ul class="is-size-6 mt-2">
+              <li>输入：当前游戏截图 + 文本提示（例如"下一步怎么移动？"）</li>
+              <li>输出：键盘 / 鼠标动作（或高层自然语言指令）</li>
+            </ul>
+            <p class="is-size-6 mt-3 italic">
+              思路：通过大模型的视觉理解和语言推理能力实现"基于推理的游戏控制"。
+            </p>
+            <p class="is-size-6 mt-3"><strong>相关参考：</strong></p>
+            <ul class="is-size-6 mt-2">
+              <li><a href="https://www.vgbench.com/" target="_blank">VG-Bench</a></li>
+              <li><a href="https://www.twitch.tv/gemini_plays_pokemon" target="_blank">Gemini Plays Pokémon</a></li>
+            </ul>
+          </div>
+          
+          <!-- 问题3 -->
+          <div class="task-box">
+            <h3 class="title is-5">3. 复杂动作空间设计（Action Space Design）</h3>
+            <p class="is-size-6 mt-2">
+              在鼠标类或高自由度的游戏中，动作不仅是离散按键，而是连续的坐标（如鼠标点击、拖拽等）。直接输出坐标可能导致不稳定或无意义的动作。
+            </p>
+            <p class="is-size-6 mt-3"><strong>可行方案：</strong></p>
+            <ul class="is-size-6 mt-2">
+              <li>使用 <strong>动作离散化（Discretization）</strong>：将屏幕划分为网格区域</li>
+              <li>或基于 <strong>目标检测/注意力机制</strong>：预测下一步应关注的视觉区域</li>
+              <li>可结合工具：
+                <ul class="mt-1 ml-5">
+                  <li><a href="https://pyautogui.readthedocs.io/" target="_blank">pyautogui</a> — 键鼠模拟</li>
+                  <li><a href="https://gymnasium.farama.org/environments/robotics/" target="_blank">gymnasium-robotics</a> — 高维动作建模</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- 问题4 -->
+          <div class="task-box">
+            <h3 class="title is-5">4. 游戏表现评估指标（Evaluation Metrics）</h3>
+            <p class="is-size-6 mt-2">
+              在没有标准得分接口的视觉游戏中，评估模型表现是一大挑战。可考虑以下几类指标：
+            </p>
+            <table class="resource-table">
+              <thead>
+                <tr>
+                  <th>类型</th>
+                  <th>说明</th>
+                  <th>示例</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>基于目标的成功率</strong></td>
+                  <td>模型是否达成特定目标（如通关、存活时间）</td>
+                  <td>通过画面检测"Game Over"或"Next Level"文字</td>
+                </tr>
+                <tr>
+                  <td><strong>基于动作多样性</strong></td>
+                  <td>模型是否能产生丰富、合理的动作序列</td>
+                  <td>动作熵、去重率</td>
+                </tr>
+                <tr>
+                  <td><strong>基于轨迹一致性</strong></td>
+                  <td>模型是否能生成与人类轨迹一致的视觉流</td>
+                  <td>SSIM、FID、动态特征差距</td>
+                </tr>
+                <tr>
+                  <td><strong>基于视觉奖励估计</strong></td>
+                  <td>基于视频变化推测的代理 reward</td>
+                  <td>帧差、运动量、关键对象得分变化</td>
+                </tr>
+                <tr>
+                  <td><strong>跨任务泛化性能</strong></td>
+                  <td>在新游戏中能否迁移已有策略</td>
+                  <td>Few-shot 适应能力测试</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">三、参考资源</h2>
+        
+        <div class="content has-text-justified">
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>强化学习基础资源</strong></p>
+            <p class="mb-2">
+              <a href="https://github.com/dennybritz/reinforcement-learning/" target="_blank">dennybritz/reinforcement-learning</a> | 
+              <a href="https://github.com/araffin/rl-baselines-zoo" target="_blank">araffin/rl-baselines-zoo</a>
+            </p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>World Model 系列（DreamerV3）</strong></p>
+            <p class="mb-2">
+              <a href="https://github.com/danijar/dreamerv3" target="_blank">danijar/dreamerv3</a>
+            </p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>多模态视觉语言模型相关</strong></p>
+            <p class="mb-2">
+              <a href="https://www.vgbench.com/" target="_blank">VG-Bench</a> | 
+              <a href="https://www.twitch.tv/gemini_plays_pokemon" target="_blank">Gemini Plays Pokémon</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+</div>
+
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p class="has-text-centered">
+            计算机视觉AI3604 | 2025-2026-1
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

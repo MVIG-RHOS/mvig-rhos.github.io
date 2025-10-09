@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="计算机视觉课程 - 课题：当触觉数据不再匮乏：视触表征学习探索">
+  <meta name="keywords" content="计算机视觉,触觉表征,视触联合学习,自监督学习,对比学习">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>课题：当触觉数据不再匮乏：视触表征学习探索</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- CSS Frameworks and Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --theme-color: #2E86AB;
+    }
+    .hero {
+      background-color: #f9f9f9;
+    }
+    .project-title {
+      font-weight: bold;
+    }
+    .project-info {
+      margin-top: 1rem;
+      line-height: 1.8;
+    }
+    .link-block {
+      margin: 0.5rem;
+    }
+    .button.is-dark {
+        background-color: var(--theme-color);
+        border-color: transparent;
+    }
+    .button.is-dark:hover {
+        background-color: #236b8e;
+    }
+    .section-title {
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      border-bottom: 2px solid var(--theme-color);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+    .project-teaser {
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      display: block;
+      max-width: 60%;
+    }
+    .reference-item {
+      margin-bottom: 1.5rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--theme-color);
+    }
+    .resource-table {
+      margin-top: 1.5rem;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .resource-table th, .resource-table td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    .resource-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+    .resource-table tr:hover {
+      background-color: #f9f9f9;
+    }
+    .task-box {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BPBZKDV09"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6BPBZKDV09');
+</script>
+
+<body>
+
+<!-- 课题头部信息区 -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 project-title">课题04</h1>
+          <h2 class="subtitle is-3">当触觉数据不再匮乏：视触表征学习探索</h2>
+          
+          <!-- 课题导航按钮 -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="../CV_2025.html#projects" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-arrow-left"></i></span>
+                  <span>返回课题列表</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">一、背景与动机</h2>
+        <div class="content has-text-justified">
+          <p>
+            触觉感知作为机器人与环境交互的重要模态，在物体识别、操作控制等任务中具有不可替代的作用。然而，当前触觉数据面临两大核心挑战：
+          </p>
+          <ul class="is-size-6 mt-3 mb-3">
+            <li>传感器多样性：从Gelsight到9DTact，不同触觉传感器的设计原理与数据编码方式存在显著差异，导致数据格式难以统一；</li>
+            <li>数据规模限制：与海量视觉数据相比，触觉数据的采集成本更高、标注难度更大，导致现有触觉数据集规模远小于视觉数据。</li>
+          </ul>
+          <p>
+            本课题聚焦于一个前瞻性问题：<strong>当触觉数据与视觉数据达到相同数量级时，如何有效学习视触联合表征？</strong> 这一探索将为多模态感知与机器人交互提供新的理论基础与技术路径。
+          </p>
+        </div>
+
+        <div class="notification is-info mt-5">
+          <p class="is-size-6"><strong>关键词：</strong> 触觉表征, 视触联合学习, 自监督学习, 对比学习, 多模态融合</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">二、任务与可能的方法</h2>
+        <p class="subtitle is-6 mb-4">核心任务：探索大规模数据场景下的视触联合表征学习方法，实现跨模态信息的有效融合与互补</p>
+        
+        <div class="content has-text-justified">
+          <!-- 方法1 -->
+          <div class="task-box">
+            <p class="is-size-6 mt-2">
+              1. 自监督的方式学习触觉编码器，例如DiNO
+            </p>
+          </div>
+          
+          <!-- 方法2 -->
+          <div class="task-box">
+            <p class="is-size-6 mt-2">
+              2.对比学习的方式学习触觉表征，例如视触对比学习、触文对比学习、3D触对比学习等
+            </p>
+          </div>
+          
+          <!-- 方法3 -->
+          <div class="task-box">
+            <p class="is-size-6 mt-2">
+              3. 类似ViLT学习联合视触表征
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">三、前提知识与参考资源</h2>
+        
+        <div class="content has-text-justified">
+
+          <!-- 触觉传感器 -->
+            <h3 class="title is-5 mt-6 mb-3">1. 常见开源触觉传感器</h3>
+
+            <p class="is-size-6 mt-2">Gelsight, Gelslim, MC-TAC, 9DTact等</p>
+
+            <h3 class="title is-5 mt-6 mb-3">2. 参考论文与开源资源</h3>
+            <p class="is-size-6 mt-2">
+                1. Demonstrating the Octopi-1.5 Visual-Tactile-Language Model<br/>
+                2. Touch100k: A Large-Scale Touch-Language-Vision Dataset for Touch-Centric Multimodal Representation<br/>
+                3. OBJECTFOLDER 2.0: A Multisensory Object Dataset for Sim2Real Transfer<br/>
+                4. Touch and Go: Learning from Human-Collected Vision and Touch
+            </p>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">四、验证平台</h2>
+        <div class="content has-text-justified">
+          <ul class="is-size-6 mb-5">
+            <li class="mb-2"><strong>仿真基准测试</strong>：
+              <a href="https://ai-workshops.github.io/maniskill-vitac-challenge-2025/" target="_blank">Maniskill-ViTac Challenge 2025</a>
+              提供的标准化视触任务评估平台
+            </li>
+            <li class="mb-2"><strong>真机验证（可选）</strong>：在实体机器人平台上采集2-3个触觉相关操作任务（如物体分类、材质识别），验证所提方法的实际效果</li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+</div>
+
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p class="has-text-centered">
+            计算机视觉AI3604 | 2025-2026-1
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="计算机视觉课程 - 课题：多模态大模型概念理解的可解释性研究">
+  <meta name="keywords" content="计算机视觉,大作业,多模态大模型,可解释性,概念理解">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>课题：多模态大模型概念理解的可解释性研究</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- CSS Frameworks and Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --theme-color: #2E86AB;
+    }
+    .hero {
+      background-color: #f9f9f9;
+    }
+    .project-title {
+      font-weight: bold;
+    }
+    .project-info {
+      margin-top: 1rem;
+      line-height: 1.8;
+    }
+    .link-block {
+      margin: 0.5rem;
+    }
+    .button.is-dark {
+        background-color: var(--theme-color);
+        border-color: transparent;
+    }
+    .button.is-dark:hover {
+        background-color: #236b8e;
+    }
+    .section-title {
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      border-bottom: 2px solid var(--theme-color);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+    .project-teaser {
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      display: block;
+      max-width: 60%;
+    }
+    .reference-item {
+      margin-bottom: 1.5rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--theme-color);
+    }
+    .resource-table {
+      margin-top: 1.5rem;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .resource-table th, .resource-table td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    .resource-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+    .resource-table tr:hover {
+      background-color: #f9f9f9;
+    }
+    .task-box {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BPBZKDV09"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6BPBZKDV09');
+</script>
+
+<body>
+
+<!-- 课题头部信息区 -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 project-title">课题08</h1>
+          <h2 class="subtitle is-3">多模态大模型概念理解的可解释性研究</h2>
+          
+          <!-- 课题导航按钮 -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="../CV_2025.html#projects" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-arrow-left"></i></span>
+                  <span>返回课题列表</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">一、背景与动机</h2>
+        <div class="content has-text-justified">
+          <p>
+            近年来，多模态大模型不断涌现。自2022年ChatGPT出现后，学术界与工业界均投入了大量的精力进行多模态大模型的开发。学术界开发了InstructBLIP，LLaVA，mPLUG-Owl、Molmo等模型；工业界与新型研究机构开发了InternVL、Qwen-VL、MiniCPM等模型。
+          </p>
+          <p>
+            然而，多模态大模型始终被幻觉现象困扰。多模态大模型的开发依赖大量的数据，也有研究者认为"只要堆数据，模型幻觉一定会被消灭"，但收集数据是劳动密集的，因而是低效的。
+          </p>
+          <p>
+            当前，学术界对于物体幻觉（object hallucination）的研究较为深入，提出了很多缓解物体幻觉的方法，也尝试使用可解释性工具对模型理解物体的机制进行分析。然而，人类语言中除了名词（物体）外，还包含动词，形容词，副词等概念。尽管关系幻觉（relationship hallucination）、属性幻觉（attribute hallucination）等概念已被提出，研究者并不清楚多模态模型理解除了物体以外的其他视觉概念的机制。
+          </p>
+          <p>
+            研究模型提取视觉特征以及视觉-语言互作的机制，对于开发高效的多模态大模型具有重要意义。
+          </p>
+        </div>
+
+        <div class="notification is-info mt-5">
+          <p class="is-size-6"><strong>关键词：</strong> 多模态大模型, 可解释性, 概念理解, 幻觉现象, 视觉-语言交互</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">二、任务与可能的方法</h2>
+        
+        <div class="content has-text-justified">
+          <!-- 任务1 -->
+          <div class="task-box">
+            <p class="is-size-6 mt-2">
+              1. 利用已有的数据集，探究多模态大模型对于物体外概念的理解能力
+            </p>
+          </div>
+          
+          <!-- 任务2 -->
+          <div class="task-box">
+            <p class="is-size-6 mt-2">2. 设计实验，利用可解释性工具或其他理论工具，探究模型理解物体外概念的机制</p>
+          </div>
+          
+          <!-- 任务3 -->
+          <div class="task-box">
+            <p class="is-size-6 mt-2">3. 尝试提出提高模型对于物体外概念理解能力的无需训练或基于微调的方法</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">三、参考资源</h2>
+        
+        <div class="content has-text-justified">
+          <!-- 参考论文 -->
+          <h3 class="title is-5 mb-3">1. 参考论文</h3>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1">[1] Jiang, Nicholas, Anish Kachinthaya, Suzanne Petryk, and Yossi Gandelsman. "Interpreting and Editing Vision-Language Representations to Mitigate Hallucinations." In The Thirteenth International Conference on Learning Representations, pp. 15766-15789. 2025.</p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1">[2] Ren, Yi, Danica J. Sutherland. "Learning Dynamics of LLM Finetuning." In The Thirteenth International Conference on Learning Representations, pp. 82725-82765. 2025.</p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1">[3] Yu, Yaodong, Kwan Ho Ryan Chan, Chong You, Chaobing Song, and Yi Ma. "Learning diverse and discriminative representations via the principle of maximal coding rate reduction." Advances in neural information processing systems 33 (2020): 9422-9434.</p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1">[4] Lou, Hantao, Changye Li, Jiaming Ji, Yaodong Yang. "SAE-V: Interpreting Multimodal Models for Enhanced Alignment" In Proceedings of the 42nd International Conference on Machine Learning, pp. 40344-40360. PMLR, 2024.</p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1">[5] Zhang, Kaichen, Yifei Shen, Bo Li, and Ziwei Liu. "Large multi-modal models can interpret features in large multi-modal models." In International Conference on Computer Vision, 2025.</p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1">[6] Li, Yong-Lu, Xinpeng Liu, Xiaoqian Wu, Yizhuo Li, Zuoyu Qiu, Liang Xu, Yue Xu, Hao-Shu Fang, and Cewu Lu. "HAKE: A knowledge engine foundation for human activity understanding." IEEE Transactions on Pattern Analysis and Machine Intelligence 45, no. 7 (2022): 8494-8506.</p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1">[7] Wu, Mingrui, Jiayi Ji, Oucheng Huang, Jiale Li, Yuhang Wu, Xiaoshuai Sun, and Rongrong Ji. "Evaluating and Analyzing Relationship Hallucinations in Large Vision-Language Models." In Proceedings of the 41st International Conference on Machine Learning, pp. 53553-53570. PMLR, 2024.</p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1">[8] Li, Yong-Lu, Yue Xu, Xinyu Xu, Xiaohan Mao, Yuan Yao, Siqi Liu, and Cewu Lu. "Beyond object recognition: A new benchmark towards object concept learning." In Proceedings of the IEEE/CVF International Conference on Computer Vision, pp. 20029-20040. 2023.</p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1">[9] Chen, Shiqi, Tongyao Zhu, Ruochen Zhou, Jinghan Zhang, Siyang Gao, Juan Carlos Niebles, Mor Geva, Junxian He, Jiajun Wu, Manling Li. "Why Is Spatial Reasoning Hard for VLMs? An Attention Mechanism Perspective on Focus Areas." In Proceedings of the 42nd International Conference on Machine Learning, pp. 9910-9932. PMLR, 2025.</p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1">[10] Kwon, Dahee, Sehyun Lee, and Jaesik Choi. "Granular Concept Circuits: Toward a Fine-Grained Circuit Discovery for Concept Representations." arXiv preprint arXiv:2508.01728 (2025).</p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1">[11] Zhang, Zhi, Srishti Yadav, Fengze Han, and Ekaterina Shutova. "Cross-modal information flow in multimodal large language models." In Proceedings of the Computer Vision and Pattern Recognition Conference, pp. 19781-19791. 2025.</p>
+          </div>
+
+          <!-- 参考资料 -->
+          <h3 class="title is-5 mt-6 mb-3">2. 参考资料</h3>
+          <ul class="is-size-6">
+            <li class="mb-2"><a href="https://github.com/JShollaj/awesome-llm-interpretability" target="_blank">https://github.com/JShollaj/awesome-llm-interpretability</a></li>
+            <li class="mb-2"><a href="https://github.com/itsqyh/Awesome-LMMs-Mechanistic-Interpretability" target="_blank">https://github.com/itsqyh/Awesome-LMMs-Mechanistic-Interpretability</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+</div>
+
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p class="has-text-centered">
+            计算机视觉AI3604 | 2025-2026-1
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

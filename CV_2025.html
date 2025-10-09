@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="计算机视觉课程主页：包含课程信息、授课团队、考核方式及大作业课题">
+  <meta name="keywords" content="计算机视觉,课程主页,大作业,图像处理,深度学习">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>计算机视觉 - 课程主页</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- CSS Frameworks and Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --theme-color: #2E86AB; /* 蓝色系主题色，适配课程学术风格 */
+    }
+    .hero {
+      background-color: #f9f9f9;
+    }
+    .course-title {
+      font-weight: bold;
+    }
+    .course-info {
+      margin-top: 1rem;
+      line-height: 1.8;
+    }
+    .link-block {
+      margin: 0.5rem;
+    }
+    .button.is-dark {
+        background-color: var(--theme-color);
+        border-color: transparent;
+    }
+    .button.is-dark:hover {
+        background-color: #236b8e;
+    }
+    .button.is-dark.is-disabled {
+        background-color: #cccccc;
+    }
+    .section-title {
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      border-bottom: 2px solid var(--theme-color);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+    .table-container {
+      margin-top: 1rem;
+      overflow-x: auto; /* 适配小屏幕表格滚动 */
+    }
+    .course-teaser {
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      display: block;
+      max-width: 80%;
+    }
+    .bibtex pre {
+      background-color: #f0f0f0;
+      border-radius: 6px;
+      padding: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 course-title">计算机视觉 (Computer Vision)</h1>
+          <h3 class="subtitle is-4">AI3604 | (2025-2026-1)</h3>
+          
+          <!-- <div style="text-align: center; margin: 2.5rem 0;">
+            <img src="static_CV_2025/cv-teaser.jpg" alt="计算机视觉课程封面" class="course-teaser" 
+                 onerror="this.src='https://via.placeholder.com/800x400?text=Computer+Vision+Course';this.alt='课程封面占位图';">
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">基本信息</h2>
+        <div class="content has-text-justified">
+            <p><i class="far fa-clock mr-2"></i> 上课时间：每周五 12:55-15:40 | 地点：东下院303</p>
+            <p><i class="fas fa-chalkboard-teacher mr-2"></i> 授课老师：卢策吾、李永露 </p>
+            <p><i class="fas fa-user-graduate mr-2"></i> 助教：许越（silicxuyue@sjtu.edu.cn）</p>
+        </div>
+        <h2 class="title is-4 section-title">课程简介</h2>
+        <div class="content has-text-justified">
+          <p>
+            本课程系统讲解计算机视觉的核心理论与实践方法，涵盖图像处理基础、特征提取、目标检测、图像分割、深度学习视觉模型等内容。课程注重理论与工程结合，通过课堂讲授和期末大作业，帮助学生掌握解决实际视觉问题的能力。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">考核方式</h2>
+        <div class="content has-text-left">
+          <p class="is-size-6 mb-4"><strong>课程总成绩构成：</strong><br/>
+          (a) 课堂参与（0%）：考勤<br/>
+          (b) 期末大作业（100%）：3人左右组队完成课题，完成一份完整投稿，并进行期末汇报。要求如下：
+          </p>
+          <ul class="is-size-8">
+            <li>从「候选课题」列表中选择题目，或经老师批准后自拟课题</li>
+            <li>提交：开源代码、实验报告、项目主页</li>
+            <li>答辩时间：第16周课堂，每人/每组展示约10分钟+问答5分钟</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title" id="projects">候选课题</h2>
+        
+        <div class="table-container">
+          <table class="table is-fullwidth is-striped is-hoverable">
+            <thead>
+              <tr class="has-background-light">
+                <th class="is-size-6">编号</th>
+                <th class="is-size-6">课题名称</th>
+                <th class="is-size-6">联系人</th>
+                <th class="is-size-6">课题介绍</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>01</td>
+                <td>相变的视觉理解 —— Referring Video<br/>Object Segmentation在开放世界中的探索</td>
+                <td>李佳鑫</td>
+                <td>
+                  <a href="project_CV2025/01.html" class="button is-small is-dark is-rounded">
+                    <span class="icon"><i class="fas fa-link"></i></span>
+                    <span>查看详情</span>
+                  </a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>02</td>
+                <td>基于人体–物体交互的三维人体重建精度提升</td>
+                <td>温博然</td>
+                <td>
+                  <a href="project_CV2025/02.html" class="button is-small is-dark is-rounded">
+                    <span class="icon"><i class="fas fa-link"></i></span>
+                    <span>查看详情</span>
+                  </a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>03</td>
+                <td>视觉配置和数据选择对机器人模仿学习性能的研究</td>
+                <td>许越</td>
+                <td>
+                  <a href="project_CV2025/03.html" class="button is-small is-dark is-rounded">
+                    <span class="icon"><i class="fas fa-link"></i></span>
+                    <span>查看详情</span>
+                  </a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>04</td>
+                <td>当触觉数据不再匮乏：视触表征学习探索</td>
+                <td>李宏</td>
+                <td>
+                  <a href="project_CV2025/04.html" class="button is-small is-dark is-rounded">
+                    <span class="icon"><i class="fas fa-link"></i></span>
+                    <span>查看详情</span>
+                  </a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>05</td>
+                <td>分层结构对VLA策略性能的影响研究</td>
+                <td>王梓宇</td>
+                <td>
+                  <a href="project_CV2025/05.html" class="button is-small is-dark is-rounded">
+                    <span class="icon"><i class="fas fa-link"></i></span>
+                    <span>查看详情</span>
+                  </a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>06</td>
+                <td>物理先验引导的人体运动建模</td>
+                <td>刘欣鹏</td>
+                <td>
+                  <a href="project_CV2025/06.html" class="button is-small is-dark is-rounded">
+                    <span class="icon"><i class="fas fa-link"></i></span>
+                    <span>查看详情</span>
+                  </a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>07</td>
+                <td>Learning to Play Visual Games with Pixels</td>
+                <td>张明宇</td>
+                <td>
+                  <a href="project_CV2025/07.html" class="button is-small is-dark is-rounded">
+                    <span class="icon"><i class="fas fa-link"></i></span>
+                    <span>查看详情</span>
+                  </a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>08</td>
+                <td>多模态大模型概念理解的可解释性研究</td>
+                <td>王泽浩</td>
+                <td>
+                  <a href="project_CV2025/08.html" class="button is-small is-dark is-rounded">
+                    <span class="icon"><i class="fas fa-link"></i></span>
+                    <span>查看详情</span>
+                  </a>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p class="has-text-centered">
+            计算机视觉AI3604 | 2025-2026-1
+          </p>
+          <!-- <p class="has-text-centered mt-2">
+            联系我们：课程邮箱 cv-course@university.edu
+          </p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 平滑滚动（点击锚点链接时）
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
+
+</body>
+</html>

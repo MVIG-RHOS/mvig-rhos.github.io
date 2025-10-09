@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="ACM课程 - 课题：分层结构对视觉-语言-动作模型机器臂操作策略性能的影响研究">
+  <meta name="keywords" content="视觉-语言-动作模型,分层结构,机器臂操作,具身智能,VLA模型">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>课题：分层结构对视觉-语言-动作模型机器臂操作策略性能的影响研究</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- CSS Frameworks and Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --theme-color: #2E86AB;
+    }
+    .hero {
+      background-color: #f9f9f9;
+    }
+    .project-title {
+      font-weight: bold;
+    }
+    .project-info {
+      margin-top: 1rem;
+      line-height: 1.8;
+    }
+    .link-block {
+      margin: 0.5rem;
+    }
+    .button.is-dark {
+        background-color: var(--theme-color);
+        border-color: transparent;
+    }
+    .button.is-dark:hover {
+        background-color: #236b8e;
+    }
+    .section-title {
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      border-bottom: 2px solid var(--theme-color);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+    .project-teaser {
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      display: block;
+      max-width: 60%;
+    }
+    .reference-item {
+      margin-bottom: 1.5rem;
+      padding-left: 0.5rem;
+      border-left: 3px solid var(--theme-color);
+    }
+    .resource-table {
+      margin-top: 1.5rem;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .resource-table th, .resource-table td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    .resource-table th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+    .resource-table tr:hover {
+      background-color: #f9f9f9;
+    }
+    .task-box {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BPBZKDV09"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6BPBZKDV09');
+</script>
+
+<body>
+
+<!-- 课题头部信息区 -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 project-title">课题05</h1>
+          <h2 class="subtitle is-3">分层结构对视觉-语言-动作模型机器臂操作策略性能的影响研究</h2>
+          
+          <!-- 课题导航按钮 -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="../CV_2025.html#projects" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-arrow-left"></i></span>
+                  <span>返回课题列表</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">一、背景与动机</h2>
+        <div class="content has-text-justified">
+          <p>
+            视觉-语言-动作（Vision-Language-Action, VLA）模型近年来成为具身智能领域的核心范式，其通过融合多模态感知与自然语言理解，实现端到端的机器人动作生成。然而，在面对多步骤、需规划或状态依赖的任务时，标准VLA模型常因缺乏显式的<strong>中间推理结构</strong>而难以稳定完成任务。
+          </p>
+          <p>
+            为提升模型的推理能力，近期研究尝试引入<strong>结构化推理机制</strong>。其中，<strong>思维链（Chain-of-Thought, CoT）</strong>作为一种在语言模型中有效提升复杂推理能力的技术，启发了具身智能领域对<strong>分层决策建模</strong>的探索。不同于直接输出动作，分层VLA模型通过显式建模"高层任务分解 → 中层子目标规划 → 底层动作执行"的层级结构，有望在保持端到端训练的同时，增强策略的可解释性与泛化能力。
+          </p>
+          <p>
+            值得注意的是，<strong>直接在推理阶段通过提示（prompting）引入CoT式推理，往往难以与VLA模型的动作生成机制对齐</strong>；更有效的方式是将此类分层结构内化到模型训练过程中。
+          </p>
+        </div>
+
+        <div class="notification is-info mt-5">
+          <p class="is-size-6"><strong>关键词：</strong> 视觉-语言-动作模型, 分层结构, 机器臂操作, 具身智能, 思维链, 决策规划</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">二、任务与实现方案</h2>
+        <p class="subtitle is-6 mb-4">核心任务：对比分析扁平化与分层VLA策略在机器臂操作任务中的性能差异，验证分层结构对模型能力的影响</p>
+        
+        <div class="content has-text-justified">
+          <!-- 任务1 -->
+          <div class="task-box">
+            <h3 class="title is-5">1. 基础VLA策略构建</h3>
+            <ul class="is-size-6 mt-2">
+              <li>选择至少一种开源VLA模型（如 <strong>Wall-OSS</strong> 或 <strong>π₀</strong>）作为基线；</li>
+              <li>在 <strong>RoboTwin</strong> 或 <strong>RoboCasa</strong> 或自选仿真 benchmark（需提前联系助教确认）上部署该模型，完成至少两类多步骤操作任务（如"按指令组装工具"、"整理混杂餐具并归位"）；</li>
+              <li>实现<strong>扁平化策略</strong>（Flat VLA）的微调：输入指令+图像，直接输出动作序列。</li>
+            </ul>
+          </div>
+          
+          <!-- 任务2 -->
+          <div class="task-box">
+            <h3 class="title is-5">2. 对比并复现不同分层VLA策略的实现</h3>
+            <p class="is-size-6 mt-2">复现并微调至少两种分层VLA策略（Hierarchical VLA）：</p>
+            <ul class="is-size-6 mt-2">
+              <li><strong>分层提示策略</strong>（Hierarchical Prompting）：引入额外的VLM作为高层规划器，生成子任务指令，再由底层VLA模型执行；可参考Hi Robot等工作；</li>
+              <li><strong>内化分层策略</strong>（Internal Hierarchical Modeling）：在VLA模型中设计多阶段输出结构，显式生成子任务规划和动作序列；可参考Wall-OSS、pi₀.₅等工作；</li>
+            </ul>
+            <p class="is-size-6 mt-3">对比各策略在相同任务上的表现，重点测试以下维度：</p>
+            <ul class="is-size-6 mt-2">
+              <li>任务成功率：在标准test case上评估各策略的任务完成率；</li>
+              <li>动作合理性：通过专家打分或自动化指标（如动作平滑度、路径效率）评估生成动作的质量；</li>
+              <li>策略泛化能力：在未见过的环境或任务上测试各策略的适应性和鲁棒性。</li>
+            </ul>
+          </div>
+          
+          <!-- 任务3 -->
+          <div class="task-box">
+            <h3 class="title is-5">3. 消融与机制分析</h3>
+            <ul class="is-size-6 mt-2">
+              <li>通过消融实验，分析各个模块对整体性能的贡献；</li>
+              <li>探索不同策略在特定任务上的优势与劣势，挖掘潜在的改进方向。</li>
+            </ul>
+          </div>
+          
+          <!-- 任务4 -->
+          <div class="task-box">
+            <h3 class="title is-5">4. Bonus（可选）</h3>
+            <p class="is-size-6 mt-2">
+              在完成仿真任务的基础上，尝试真机实验（实验室提供单双臂操作平台），进行数据采集、训练与测试，验证不同策略在真实环境中的有效性。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">三、前提知识与参考资源</h2>
+        
+        <div class="content has-text-justified">
+
+          <!-- 开源工具与平台 -->
+          <h3 class="title is-5 mt-6 mb-3">1. 开源工具与平台</h3>
+          <table class="resource-table">
+            <thead>
+              <tr>
+                <th>名称</th>
+                <th>说明</th>
+                <th>访问链接</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>RoboTwin</strong></td>
+                <td>一个用于机器人操作的仿真平台，支持多种任务和场景</td>
+                <td><a href="https://robotwin-platform.github.io/docs/" target="_blank">robotwin-platform.github.io/docs/</a></td>
+              </tr>
+              <tr>
+                <td><strong>RoboCasa</strong></td>
+                <td>斯坦福大学开发的家居机器人仿真平台</td>
+                <td><a href="https://robocasa.ai/" target="_blank">robocasa.ai/</a></td>
+              </tr>
+              <tr>
+                <td><strong>Wall-OSS</strong></td>
+                <td>Wall-OSS VLA模型的开源实现</td>
+                <td><a href="https://github.com/X-Square-Robot/wall-x" target="_blank">github.com/X-Square-Robot/wall-x</a></td>
+              </tr>
+              <tr>
+                <td><strong>π₀.₅</strong></td>
+                <td>π₀.₅ VLA模型的开源实现</td>
+                <td><a href="https://github.com/Physical-Intelligence/openpi" target="_blank">github.com/Physical-Intelligence/openpi</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 参考论文 -->
+          <h3 class="title is-5 mt-6 mb-3">2. 参考论文</h3>
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models</strong></p>
+            <p class="mb-2">
+              <a href="https://arxiv.org/pdf/2502.19417" target="_blank">Paper: arxiv.org/pdf/2502.19417</a>
+            </p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>π0.5 : a Vision-Language-Action Model with Open-World Generalization</strong></p>
+            <p class="mb-2">
+              <a href="https://arxiv.org/abs/2504.16054" target="_blank">Paper: arxiv.org/abs/2504.16054</a>
+            </p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>Wall-OSS: Igniting VLMs toward the Embodied Space</strong></p>
+            <p class="mb-2">
+              <a href="https://arxiv.org/abs/2509.11766" target="_blank">Paper: arxiv.org/abs/2509.11766</a>
+            </p>
+          </div>
+          
+          <div class="reference-item">
+            <p class="is-size-6 mb-1"><strong>Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</strong></p>
+            <p class="mb-2">
+              <a href="https://arxiv.org/abs/2201.11903" target="_blank">Paper: arxiv.org/abs/2201.11903</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+
+  <!-- <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 section-title">四、提交要求</h2>
+        <div class="content has-text-justified">
+          <ul class="is-size-6">
+            <li class="mb-3"><strong>技术报告</strong>：介绍所选VLA模型与分层策略的实现细节、实验设计、结果与分析，不少于8页；</li>
+            <li class="mb-3"><strong>代码提交</strong>：包含模型训练、测试脚本与README，要求可直接运行；</li>
+            <li class="mb-3"><strong>视频演示</strong>：展示分层策略的执行过程，时长为1–3分钟；</li>
+            <li class="mb-3"><strong>附件</strong>：实验数据、日志、模型权重（可选），压缩打包提交。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div> -->
+  
+</div>
+
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p class="has-text-centered">
+            ACM课程大作业 | 2025-2026-1
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
