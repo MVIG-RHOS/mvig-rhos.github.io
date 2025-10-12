@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiquiPhys: A Benchmark for Liquid Physical Properties</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        h2 {
+            font-size: 20px;
+            margin-top: 30px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        .authors {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .abstract {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .pipeline-img {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>LiquiPhys: A Benchmark for Liquid Physical Properties</h1>
+    
+    <h2>Authors</h2>
+    <div class="authors">
+        Lu Pengrui, Zhang Shiqi, Chen Ruiming
+    </div>
+
+    <h2>Repository</h2>
+    <p>Project repository: <a href="https://github.com/Thomas180105/LiquiPhys" target="_blank">https://github.com/Thomas180105/LiquiPhys</a></p>
+
+    <h2>Abstract</h2>
+    <div class="abstract">
+        Understanding physical properties of liquids is crucial for AI systems, yet existing benchmarks often rely on simplified, synthetic data that fails to capture real-world complexity. We present LiquiPhys, a novel evaluation benchmark for testing liquid physical understanding in real-world scenarios. Our benchmark covers six fundamental physical properties: density, refractive index, surface tension, pressure, viscosity, and flow speed. It features thousands of real-world images combined with systematically designed question templates that test different levels of physical reasoning abilities. We introduce a three-level difficulty gradient and incorporate both visual and textual interference to simulate real-world complexity. Experimental results on state-of-the-art multimodal models (GPT-4o and LLaVA) reveal significant gaps in their physical understanding capabilities, particularly in handling complex scenarios and counterfactual reasoning. Our findings highlight the challenges in building robust physical world models and provide insights for future development in this direction.
+    </div>
+
+    <h2>Key Features</h2>
+    <ul>
+        <li>A comprehensive dataset of real-world liquid physical properties, covering density, refractive index, surface tension, pressure, viscosity, and flow speed</li>
+        <li>Dynamic VQA generation pipeline enabling multiple question-answer pairs from each template</li>
+        <li>Three-level difficulty gradient for precise identification of model limitations</li>
+        <li>Enhanced realism through visual and textual interference, better reflecting real-world scenarios</li>
+    </ul>
+
+    <h2>Our Pipeline</h2>
+    <img src="pipe.pdf" alt="Project Pipeline" class="pipeline-img">
+</body>
+</html>
